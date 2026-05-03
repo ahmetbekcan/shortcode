@@ -1,3 +1,5 @@
+import os
+from pathlib import Path
 
 
 class Animal:
