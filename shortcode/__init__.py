@@ -1,8 +1,8 @@
 """
-codebrief — Extract compact structural maps from source code to save LLM tokens.
+shortcode — Extract compact structural maps from source code to save LLM tokens.
 
 Quick start:
-    from codebrief import parse_file
+    from shortcode import parse_file
     from pathlib import Path
 
     meta = parse_file(Path("src/auth.py"))

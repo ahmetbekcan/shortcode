@@ -1,5 +1,5 @@
 [project]
-name = "codebrief"
+name = "shortcode"
 version = "0.1.0"
 description = "Extract compact structural maps from source code to save LLM tokens"
 readme = "README.md"
@@ -34,13 +34,13 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/ahmetbekcan/codebrief"
-Repository = "https://github.com/ahmetbekcan/codebrief"
-Issues = "https://github.com/ahmetbekcan/codebrief/issues"
+Homepage = "https://github.com/ahmetbekcan/shortcode"
+Repository = "https://github.com/ahmetbekcan/shortcode"
+Issues = "https://github.com/ahmetbekcan/shortcode/issues"
 
 [project.scripts]
-codebrief = "codebrief.__main__:main"
-codebrief-mcp = "codebrief.agents.mcp:serve"
+shortcode = "shortcode.__main__:main"
+shortcode-mcp = "shortcode.agents.mcp:serve"
 
 [project.optional-dependencies]
 mcp = ["mcp>=1.0.0"]

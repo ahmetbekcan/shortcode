@@ -1,4 +1,4 @@
-"""MCP server that exposes codebrief as tools for AI coding agents.
+"""MCP server that exposes shortcode as tools for AI coding agents.
 
 Supported clients: Claude Code, Cursor, Windsurf, and any MCP-compatible agent.
 
@@ -6,14 +6,14 @@ Usage
 -----
 Start the server (stdio transport, used by most MCP clients):
 
-    codebrief-mcp
+    shortcode-mcp
 
 Then register it in your agent's MCP config, e.g. Claude Code (~/.claude.json):
 
     {
       "mcpServers": {
-        "codebrief": {
-          "command": "codebrief-mcp"
+        "shortcode": {
+          "command": "shortcode-mcp"
         }
       }
     }
@@ -33,17 +33,17 @@ try:
 except ImportError as exc:
     raise ImportError(
         "The MCP server requires the 'mcp' extra.\n"
-        "Install it with: pip install codebrief[mcp]"
+        "Install it with: pip install shortcode[mcp]"
     ) from exc
 
-from codebrief.formatter import format_metadata
-from codebrief.languages import EXT_TO_CONFIG
-from codebrief.parser import parse_file
+from shortcode.formatter import format_metadata
+from shortcode.languages import EXT_TO_CONFIG
+from shortcode.parser import parse_file
 
 mcp = FastMCP(
-    "codebrief",
+    "shortcode",
     instructions=(
-        "Use codebrief tools to understand a codebase's structure before reading files. "
+        "Use shortcode tools to understand a codebase's structure before reading files. "
         "Call scan_folder first to get a token-efficient map showing every class, method, "
         "and function with its line range. Then read only the specific lines you need."
     ),
@@ -117,5 +117,5 @@ def brief_file(path: str) -> str:
 
 
 def serve() -> None:
-    """Entry point: start the codebrief MCP server over stdio."""
+    """Entry point: start the shortcode MCP server over stdio."""
     mcp.run()

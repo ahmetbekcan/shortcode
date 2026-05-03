@@ -7,12 +7,12 @@ class AgentIntegration(ABC):
 
     Subclass this to add support for a new agent (e.g. Cursor, Copilot, Devin).
     Each integration is responsible for setting up whatever config files or
-    server processes that agent needs to consume codebrief's output.
+    server processes that agent needs to consume shortcode's output.
     """
 
     #: Short identifier used on the CLI, e.g. "claude-code", "cursor".
     name: str
-    #: One-line description shown in `codebrief agents list`.
+    #: One-line description shown in `shortcode agents list`.
     description: str
 
     @abstractmethod

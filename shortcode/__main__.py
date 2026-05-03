@@ -11,7 +11,7 @@ def main() -> None:
     interactive = len(sys.argv) == 1
 
     if interactive:
-        print("=== codebrief ===\n")
+        print("=== shortcode ===\n")
         folder_input = input("Folder to scan: ").strip().strip('"')
         if not folder_input:
             input("\nNo folder entered. Press Enter to exit.")
@@ -24,7 +24,7 @@ def main() -> None:
             sys.argv += ["--output-dir", output_input]
 
     ap = argparse.ArgumentParser(
-        prog="codebrief",
+        prog="shortcode",
         description="Extract compact structural maps from source code to save LLM tokens.",
     )
     ap.add_argument("folder", help="Root folder to scan")

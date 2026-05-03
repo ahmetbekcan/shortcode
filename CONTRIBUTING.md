@@ -1,12 +1,12 @@
-# Contributing to codebrief
+# Contributing to shortcode
 
-Thank you for helping make codebrief better!
+Thank you for helping make shortcode better!
 
 ## Development setup
 
 ```bash
-git clone https://github.com/ahmetbekcan/codebrief.git
-cd codebrief
+git clone https://github.com/ahmetbekcan/shortcode.git
+cd shortcode
 uv sync --dev
 ```
 
@@ -19,13 +19,13 @@ uv run pytest tests/ -v
 ## Linting
 
 ```bash
-uv run ruff check codebrief tests
-uv run ruff format codebrief tests
+uv run ruff check shortcode tests
+uv run ruff format shortcode tests
 ```
 
 ## Adding a new language
 
-All language configurations live in `codebrief/languages.py`. Adding a new language takes about 10 lines:
+All language configurations live in `shortcode/languages.py`. Adding a new language takes about 10 lines:
 
 **1. Install the tree-sitter binding:**
 ```bash
@@ -62,6 +62,6 @@ print(tree.root_node.sexp())
 ## Pull request checklist
 
 - [ ] `uv run pytest tests/ -v` passes
-- [ ] `uv run ruff check codebrief tests` passes
+- [ ] `uv run ruff check shortcode tests` passes
 - [ ] New language? Add fixture, tests, and update `README.md`
 - [ ] New feature? Update docstrings and `README.md` if user-facing

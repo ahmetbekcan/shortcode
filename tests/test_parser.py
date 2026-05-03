@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from codebrief import parse_file
+from shortcode import parse_file
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
