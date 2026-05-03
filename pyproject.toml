@@ -40,6 +40,10 @@ Issues = "https://github.com/ahmetbekcan/codebrief/issues"
 
 [project.scripts]
 codebrief = "codebrief.__main__:main"
+codebrief-mcp = "codebrief.agents.mcp:serve"
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.0.0"]
 
 [dependency-groups]
 dev = [

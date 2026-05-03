@@ -118,6 +118,79 @@ for fn in meta.functions:
 
 ---
 
+## Claude Code integration (MCP)
+
+codebrief ships an MCP server so Claude Code (and any MCP-compatible agent) can call it as a tool directly — no manual `.meta` file management needed.
+
+### Install with MCP support
+
+```bash
+pip install "codebrief[mcp]"
+# or
+uv add "codebrief[mcp]"
+```
+
+### Register in Claude Code
+
+Add to your `~/.claude.json` (global) or `.claude/settings.json` (project):
+
+```json
+{
+  "mcpServers": {
+    "codebrief": {
+      "command": "codebrief-mcp"
+    }
+  }
+}
+```
+
+Or with `uvx` (no install needed):
+
+```json
+{
+  "mcpServers": {
+    "codebrief": {
+      "command": "uvx",
+      "args": ["--from", "codebrief[mcp]", "codebrief-mcp"]
+    }
+  }
+}
+```
+
+### Available tools
+
+| Tool | Description |
+|---|---|
+| `scan_folder(path, extensions?, recursive?)` | Scan a folder and return structural maps for all source files |
+| `brief_file(path)` | Return the structural map of a single source file |
+
+### Example session
+
+```
+You:   scan my src/ folder
+
+Claude: [calls scan_folder("src/")]
+
+       [py] src/auth.py
+       IMPORT flask,jwt,datetime
+       CLASS TokenManager:12-87
+         __init__:13-18
+         generate:20-35
+         verify:37-52
+
+       [py] src/models.py
+       CLASS User:4-31
+         ...
+
+You:   show me the generate method
+
+Claude: [reads src/auth.py lines 20-35]
+```
+
+> **Other MCP clients:** The same `codebrief-mcp` server works with Cursor, Windsurf, and any agent that supports the Model Context Protocol.
+
+---
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Adding support for a new language takes about 10 lines.
