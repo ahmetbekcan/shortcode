@@ -132,7 +132,12 @@ uv add "shortcode[mcp]"
 
 ### Register in Claude Code
 
-Add to your `~/.claude.json` (global) or `.claude/settings.json` (project):
+Edit your Claude Code config file:
+
+- **macOS/Linux:** `~/.claude.json`
+- **Windows:** `C:\Users\<YourName>\.claude.json`
+
+Add the `mcpServers` block:
 
 ```json
 {
@@ -144,7 +149,7 @@ Add to your `~/.claude.json` (global) or `.claude/settings.json` (project):
 }
 ```
 
-Or with `uvx` (no install needed):
+Or with `uvx` — no separate install needed, just requires [uv](https://docs.astral.sh/uv/getting-started/installation/):
 
 ```json
 {
@@ -156,6 +161,21 @@ Or with `uvx` (no install needed):
   }
 }
 ```
+
+**Restart Claude Code** after editing the config. Run `/mcp` to confirm the server is connected.
+
+### Make Claude use it consistently (recommended)
+
+Add a `CLAUDE.md` file to your project root:
+
+```markdown
+## Code navigation
+A shortcode MCP server is available. Before reading any source file, call
+`brief_file(path)` to get its structure and line ranges. Then read only
+the specific lines you need using offset + limit.
+```
+
+This instructs Claude to use shortcode at the start of every session instead of reading full files.
 
 ### Available tools
 
