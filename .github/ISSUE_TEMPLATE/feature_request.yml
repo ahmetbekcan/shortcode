@@ -1,0 +1,19 @@
+name: Feature Request
+description: Suggest a new language, feature, or improvement
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What would you like?
+      placeholder: "e.g. Add support for Kotlin, expose decorator names in output..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: usecase
+    attributes:
+      label: Use case
+      description: How would this help you save tokens or improve your workflow?
+    validations:
+      required: true

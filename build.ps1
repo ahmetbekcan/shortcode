@@ -1,0 +1,18 @@
+uv run pyinstaller codebrief/__main__.py `
+  --name codebrief `
+  --onedir `
+  --console `
+  --collect-all tree_sitter `
+  --collect-all tree_sitter_python `
+  --collect-all tree_sitter_javascript `
+  --collect-all tree_sitter_typescript `
+  --collect-all tree_sitter_java `
+  --collect-all tree_sitter_c_sharp `
+  --collect-all tree_sitter_cpp `
+  --collect-all tree_sitter_go `
+  --collect-all tree_sitter_rust `
+  --collect-all tree_sitter_ruby `
+  --collect-all tree_sitter_php `
+  --distpath dist `
+  --clean `
+  -y

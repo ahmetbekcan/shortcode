@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[oc]
+*.egg-info
+.venv
+
+# Build outputs
+build/
+dist/
+*.spec
+
+# codebrief generated files
+*.meta
+sample/meta/

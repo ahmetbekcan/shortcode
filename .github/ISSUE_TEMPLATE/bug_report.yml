@@ -1,0 +1,40 @@
+name: Bug Report
+description: Report incorrect parsing output or a crash
+labels: ["bug"]
+body:
+  - type: input
+    id: language
+    attributes:
+      label: Language
+      placeholder: "e.g. Python, C++, Go"
+    validations:
+      required: true
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Source code snippet
+      description: Minimal example that reproduces the issue
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected .meta output
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual .meta output
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: codebrief version
+      placeholder: "e.g. 0.1.0"
