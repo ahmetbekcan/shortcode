@@ -14,4 +14,4 @@ from .models import ClassInfo, FileMetadata, MethodInfo
 from .parser import parse_file
 
 __all__ = ["parse_file", "FileMetadata", "ClassInfo", "MethodInfo"]
-__version__ = "0.1.0"
+__version__ = "0.1.1"

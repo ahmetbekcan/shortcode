@@ -1,6 +1,6 @@
 [project]
 name = "shortcode"
-version = "0.1.0"
+version = "0.1.1"
 description = "Extract compact structural maps from source code to save LLM tokens"
 readme = "README.md"
 license = "MIT"
