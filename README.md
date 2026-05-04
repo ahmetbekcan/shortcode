@@ -171,7 +171,7 @@ Add a `CLAUDE.md` file to your project root:
 ```markdown
 ## Code navigation
 A shortcode MCP server is available. Before reading any source file, call
-`brief_file(path)` to get its structure and line ranges. Then read only
+`compact_file(path)` to get its structure and line ranges. Then read only
 the specific lines you need using offset + limit.
 ```
 
@@ -181,16 +181,21 @@ This instructs Claude to use shortcode at the start of every session instead of 
 
 | Tool | Description |
 |---|---|
-| `scan_folder(path, extensions?, recursive?)` | Scan a folder and return structural maps for all source files |
-| `brief_file(path)` | Return the structural map of a single source file |
+| `compact_file(path)` | Return a token-efficient view of a source file |
 
-### Example session
+`compact_file` automatically picks the most token-efficient response:
+
+- **`[COMPACT]`** — returned when the structural map is significantly smaller than the source. Shows imports, classes, methods, and functions with line ranges. Claude then reads only the specific lines it needs.
+- **`[FULL]`** — returned when the file is too small to benefit from compaction (compact map would save less than 30%). Claude gets the full content in one call with no second round trip needed.
+
+### Example session — large file
 
 ```
-You:   scan my src/ folder
+You:   show me the generate method in src/auth.py
 
-Claude: [calls scan_folder("src/")]
+Claude: [calls compact_file("src/auth.py")]
 
+       [COMPACT]
        [py] src/auth.py
        IMPORT flask,jwt,datetime
        CLASS TokenManager:12-87
@@ -198,13 +203,20 @@ Claude: [calls scan_folder("src/")]
          generate:20-35
          verify:37-52
 
-       [py] src/models.py
-       CLASS User:4-31
-         ...
+       [reads src/auth.py lines 20-35]
+```
 
-You:   show me the generate method
+### Example session — small file
 
-Claude: [reads src/auth.py lines 20-35]
+```
+You:   what does src/config.py do?
+
+Claude: [calls compact_file("src/config.py")]
+
+       [FULL]
+       DEBUG = True
+       DATABASE_URL = "sqlite:///db.sqlite3"
+       SECRET_KEY = "abc123"
 ```
 
 > **Other MCP clients:** The same `shortcode-mcp` server works with Cursor, Windsurf, and any agent that supports the Model Context Protocol.
